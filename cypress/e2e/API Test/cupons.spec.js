@@ -1,7 +1,12 @@
 
+const faker = require('faker-br');
+
+
 describe('Testes da API de Cupons', () => {
 
     const token = "YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy";
+    const numero = faker.random.number();
+    const valor = faker.finance.amount();
 
     it('Deve listar todos os cupons cadastrados', () => {
         cy.request({
@@ -26,10 +31,10 @@ describe('Testes da API de Cupons', () => {
                 authorization: `Basic ${token}` 
             },
             body: {
-                "code": "GANHE15",
-                "amount": "15.00",
+                "code": "GANHE" + numero,
+                "amount": valor,
                 "dicount_type": "fixed_product",
-                "description": "Cupom de 15% para teste"
+                "description": "Cupom " + numero + " para teste"
             }
         })
 

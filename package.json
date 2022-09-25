@@ -20,5 +20,8 @@
   "homepage": "https://github.com/emersonsantiago/TCC_EBAC#readme",
   "devDependencies": {
     "cypress": "^10.7.0"
+  },
+  "dependencies": {
+    "faker-br": "^0.4.1"
   }
 }

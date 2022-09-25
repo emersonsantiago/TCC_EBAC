@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('escolherProduto', (nomeProduto) => {
+
+    cy.get('.vc_custom_1503474667302').contains(nomeProduto).click();
+
+
+});
+
+Cypress.Commands.add('validarCarrinho', (Produto) => {
+
+    cy.get('.woocommerce-message').should('contain', Produto + ' foi adicionado no seu carrinho.');
+    cy.get('.logo-in-theme > .logo > a > .logo-img').click();
+
+
+ });
