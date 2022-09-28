@@ -3,26 +3,16 @@
 describe('Inserir três produtos no carrinho', () => {
  
  
-  it('Inserir produtos no carrinho de compras', () => {
-    cy.visit('http://lojaebac.ebaconline.art.br/');
-    cy.escolherProduto('Ingrid Running Jacket');
-    cy.get('.button-variable-item-S').click();
-    cy.get('.button-variable-item-Orange').click();
-    cy.get('.variations_form').contains("Comprar").click();
-    cy.validarCarrinho('Ingrid Running Jacket'); //validar se o produto foi adicionado no carrinho com sucesso
-
-    cy.escolherProduto('Augusta Pullover Jacket');
-    cy.get('.button-variable-item-S').click();
-    cy.get('.button-variable-item-Orange').click();
-    cy.get('.variations_form').contains("Comprar").click();
-    cy.validarCarrinho('Augusta Pullover Jacket');
-
-    cy.escolherProduto('Stellar Solar Jacket');
-    cy.get('.button-variable-item-S').click();
-    cy.get('.button-variable-item-Red').click();
-    cy.get('.variations_form').contains("Comprar").click();
-    cy.validarCarrinho('Stellar Solar Jacket');
+  it('Inserir produtos no carrinho de compras e validar quantidade', () => {
     
+    cy.addCarrinho('5', 'Red', '32')
+    cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
+    cy.addCarrinho('4', 'Black', '36')
+    cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
+    cy.addCarrinho('3', 'Green', 'L')
+    cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
+    cy.get('.dropdown-toggle > .mini-cart-items').should('contain', '3')
+        
   })
 
 
